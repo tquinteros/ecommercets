@@ -8,7 +8,7 @@ const Header = () => {
         <header className='sticky w-full bg-white top-0'>
             <nav className='flex justify-between items-center'>
                 <Image alt="LogoHeader" src='/logo.png' width={80} height={80} />
-                <ul className='flex gap-8 hover:opacity-75 duration-300 justify-between items-center'>
+                <ul className='hidden md:flex gap-8 hover:opacity-75 duration-300 justify-between items-center'>
                     {
                         navLinks.map((navLink, index) => {
                             return (

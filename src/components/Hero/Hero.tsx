@@ -76,7 +76,7 @@ const Hero = () => {
                     />
                 </div>
             ) : (
-                <div style={{ height: heroHeight }} className='flex gap-8 mt-12 md:mt-0 flex-col lg:flex-row justify-center items-center'>
+                <div className='flex mt-48 md:gap-16 h-screen md:mt-0 md:flex-row flex-col justify-center items-center'>
                     <div style={divStyle} className='p-8 flex flex-col gap-8  h-full'>
                         <h3 className='text-5xl'>
                             SALE!!
@@ -93,11 +93,11 @@ const Hero = () => {
                             <span className='font-bold ml-2 text-opacity-70'> 50% OFF
                             </span>
                         </span>
-                        <div className='flex gap-12 justify-center'>
-                            <button className='bg-black text-white px-12 py-3 rounded-md hover:bg-opacity-75 duration-300'>
+                        <div className='grid grid-cols-12 gap-8 justify-center'>
+                            <button className='bg-black md:col-span-6 col-span-12 text-white px-12 py-3 rounded-md hover:bg-opacity-75 duration-300'>
                                 View More
                             </button>
-                            <button className='bg-black text-white px-12 py-3 rounded-md hover:bg-opacity-75 duration-300'>
+                            <button className='bg-black md:col-span-6 col-span-12 text-white px-12 py-3 rounded-md hover:bg-opacity-75 duration-300'>
                                 Add to cart
                             </button>
                         </div>

@@ -10,11 +10,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
         router.push(`/product/${product.id}`)
     }
 
+    // slice the title to 50 characters
+    const title = product.title.length > 30 ? product.title.slice(0, 30) + '...' : product.title
+
     return (
         <div className='flex flex-col border border-black col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3'>
             <Image alt={product.title} src={product.image || ''} className='w-full aspect-[1/1] object-fit' width={200} height={200} />
             <div className='flex p-4 gap-4 flex-col'>
-                <span>{product.title}</span>
+                <span className='max-h-[50px]'>{title}</span>
                 <span className='font-bold'>${product.price}</span>
                 <div className='flex gap-4'>
                     <button
