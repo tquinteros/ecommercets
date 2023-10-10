@@ -12,7 +12,8 @@ const FeaturedProducts = () => {
         try {
             const { data } = await axios.get('https://fakestoreapi.com/products');
             const filteredProducts = data.filter((product: Products) => product && product.id && product.id % 2 === 0);
-            setProducts(filteredProducts);
+            const firstFour = filteredProducts.slice(0, 4);
+            setProducts(firstFour);
         } catch (error) {
             console.log(error);
         }
