@@ -11,7 +11,7 @@ import { useAppSelector } from '@/redux/store';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 
-const ProductCard = ({ product, index }: ProductCardProps) => {
+const ProductCard = ({ product, index, reverse }: ProductCardProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const handlePushToProduct = () => {
@@ -51,10 +51,14 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
                     <h3 className='text-md font-semibold'>{title}</h3>
                     <h3 className='text-2xl font-semibold'><span className='line-through'>${product.price}</span> <span>${getDiscountedPrice(product?.price || 0, product?.discountPercentage || 0)}</span></h3>
                 </div>
-                <div className='flex mt-auto mb-4 gap-4 justify-center'>
-                    <Link href={`/products/${product.id}`} className={`inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none`}
+                <div className={`flex mt-auto mb-4 gap-4 justify-center`}>
+                    <Link href={`/products/${product.id}`} className={`inline-flex ${reverse ? "w-full" : ""} items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none`}
                     >View More</Link>
-                    <Button onClick={handleAddToCart} className=''>Add to Cart</Button>
+                    {
+                        !reverse && (
+                            <Button onClick={handleAddToCart} className=''>Add to Cart</Button>
+                        )
+                    }
                 </div>
             </div>
         </motion.div>

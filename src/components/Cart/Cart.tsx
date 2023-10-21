@@ -41,7 +41,7 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
 
     return (
         <motion.div
-            initial={{ x: 200 }}
+            initial={{ x: 300 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.5 }}
             className="absolute  bg-white border border-black flex flex-col rounded-lg min-h-[700px] md:min-h-[800px] max-h-[700px] md:max-h-[800px] p-3 overflow-y-auto z-[999] md:w-[500px] w-full top-24 right-0"

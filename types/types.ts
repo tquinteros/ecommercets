@@ -26,6 +26,7 @@ export interface ProductItems {
 export interface ProductCardProps {
     product: ProductItemProps;
     index: number;
+    reverse?: boolean;
 }
 
 export interface ButtonProps {
