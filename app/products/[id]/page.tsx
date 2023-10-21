@@ -3,12 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ProductItems, Products } from "@/types/types";
+import { ProductItems } from "@/types/types";
 import { Oval } from "react-loader-spinner";
 
 export default function Movies({ params }: ProductItems) {
     const { id } = params;
-    const [product, setProduct] = useState<Products | null>(null);
+    const [product, setProduct] = useState<ProductItems | null>(null);
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
