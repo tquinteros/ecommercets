@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/features/cart"
 import { toast } from "react-toastify";
+import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 
 const ProductDetail = ({ product }: ProductDetailsProps) => {
     const [headerHeight, setHeaderHeight] = useState(0);
@@ -33,7 +34,7 @@ const ProductDetail = ({ product }: ProductDetailsProps) => {
     }
 
     return (
-        <div className="container mt-16 mx-auto">
+        <div className="container flex flex-col gap-16 mt-16 mx-auto">
             <div
                 style={{ minHeight: `calc(100vh - ${headerHeight}px)` }}
                 className="grid border grid-cols-12 content-center md:g justify-items-center gap-6">
@@ -65,6 +66,7 @@ const ProductDetail = ({ product }: ProductDetailsProps) => {
                     </div>
                 </div>
             </div>
+            <FeaturedProducts />
         </div>
     )
 }
