@@ -63,6 +63,7 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
                                                 alt={cartItem.title}
                                                 width={128}
                                                 height={128}
+                                                className="h-[128px] object-cover"
                                             />
                                         ) : (
                                             <div>No Image</div>

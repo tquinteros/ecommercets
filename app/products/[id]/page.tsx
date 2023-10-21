@@ -7,7 +7,7 @@ import { ProductItems, ProductItemProps } from "@/types/types";
 import { Oval } from "react-loader-spinner";
 import ProductDetail from "@/src/components/ProductDetail/ProductDetail";
 
-export default function Movies({ params }: ProductItems) {
+export default function Products({ params }: ProductItems) {
     const { id } = params;
     const [product, setProduct] = useState<ProductItemProps | null>(null);
 
@@ -28,6 +28,10 @@ export default function Movies({ params }: ProductItems) {
             fetchMovieDetails();
         }
     }, [id]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div>
