@@ -12,7 +12,7 @@ export const navLinks = [
         label: "About Us",
     },
     {
-        href: "/contact",
-        label: "Contact",
-    },
+        href: "#featured",
+        label: "Featured Products",
+    }
 ];

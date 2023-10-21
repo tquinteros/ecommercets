@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { addToCart } from "@/redux/features/cart"
 import { useAppSelector } from '@/redux/store';
+import { toast } from 'react-toastify';
 
 const ProductCard = ({ product, index }: ProductCardProps) => {
     const router = useRouter();
@@ -25,13 +26,13 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
 
     const handleAddToCart = () => {
         dispatch(addToCart(product))
+        toast.success('Product added to cart successfully!', {
+            position: "bottom-center",
+        })
     }
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 * index }}
             className='flex flex-col gap-4 bg-white shadow-md hover:shadow-2xl duration-300 rounded-lg h-[400px] col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3'>
             <div className='relative'>
                 <Image alt={product.title} src={product.thumbnail || ''} className='rounded-t-lg border w-full h-[200px] z-0' width={200} height={200} />

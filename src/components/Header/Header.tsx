@@ -8,7 +8,7 @@ import Cart from '../Cart/Cart';
 
 const Header = () => {
 
-    const [isCartOpen, setIsCartOpen] = useState(true);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     const cartLength = useAppSelector((state) => state.cartReducer.value.products.length);
 
@@ -19,7 +19,9 @@ const Header = () => {
     return (
         <header className='sticky w-full z-50 bg-red-500 top-0'>
             <nav className='flex justify-between container mx-auto items-center'>
-                <Image alt="LogoHeader" src='/logo.png' width={80} height={80} />
+                <Link href="/">
+                    <Image alt="LogoHeader" src='/logo.png' width={80} height={80} />
+                </Link>
                 <ul className='flex gap-8 justify-between items-center'>
                     {
                         navLinks.map((navLink, index) => {

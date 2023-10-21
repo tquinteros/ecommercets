@@ -5,9 +5,11 @@
 
 * {
   font-family: 'Source Code Pro', monospace;
+  scroll-behavior: smooth;
 }
 
 body {
   /* background-color: #DAD2D8; */
   background-color: #ebebeb;
+  scroll-behavior: smooth;
 }

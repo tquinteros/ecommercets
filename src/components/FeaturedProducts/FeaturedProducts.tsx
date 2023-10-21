@@ -43,7 +43,7 @@ const FeaturedProducts = () => {
     }, []);
 
     return (
-        <div className="flex flex-col md:my-32 gap-8">
+        <div id="featured" className="flex flex-col md:my-32 gap-8">
             <div className="flex flex-col items-center gap-4">
                 <h3 className="font-bold text-4xl">Featured Products</h3>
                 <div className="bg-black w-24 h-0.5"></div>

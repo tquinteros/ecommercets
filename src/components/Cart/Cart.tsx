@@ -9,6 +9,7 @@ import { removeFromCart, clearCart } from "@/redux/features/cart";
 import { AiOutlineClose } from "react-icons/ai";
 import { CartProps } from "@/types/types";
 import Button from "../Button/Button";
+import { toast } from "react-toastify";
 
 const Cart = ({ setIsCartOpen }: CartProps) => {
     const cart = useAppSelector((state) => state.cartReducer.value.products);
@@ -16,6 +17,9 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
 
     const handleRemoveItem = (id: number) => {
         dispatch(removeFromCart(id));
+        toast.success('Product removed from cart successfully!', {
+            position: "bottom-center",
+        })
     }
 
     const handleCloseCart = () => {
@@ -39,7 +43,7 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
         <motion.div
             initial={{ x: 200 }}
             animate={{ x: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
             className="absolute  bg-white border border-black flex flex-col rounded-lg min-h-[700px] md:min-h-[800px] max-h-[700px] md:max-h-[800px] p-3 overflow-y-auto z-[999] md:w-[500px] w-full top-24 right-0"
         >
             <div className="absolute right-2">

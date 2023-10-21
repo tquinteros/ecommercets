@@ -1,10 +1,11 @@
+import ProductsTemplate from "@/src/components/ProductsTemplate/ProductsTemplate";
 import React from "react";
 
 const ProductPage = () => {
     return (
-        <div>
-            PRODUCTS
-        </div>
+        <main className="container mx-auto">
+            <ProductsTemplate />
+        </main>
     )
 }
 

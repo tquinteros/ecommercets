@@ -9,6 +9,7 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { addToCart } from "@/redux/features/cart"
 import { useAppSelector } from '@/redux/store';
+import { toast } from 'react-toastify';
 
 const Hero = () => {
     const [heroHeight, setHeroHeight] = useState(0);
@@ -78,6 +79,9 @@ const Hero = () => {
         if (featuredProduct) {
             dispatch(addToCart(featuredProduct));
         }
+        toast.success('Product added to cart successfully!', {
+            position: "bottom-center",
+        })
     }
 
     return (

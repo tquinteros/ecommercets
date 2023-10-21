@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ReduxProvider } from '@/redux/provider'
 const inter = Inter({ subsets: ['latin'] })
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,6 +23,7 @@ export default function RootLayout({
         <ReduxProvider>
           <Header />
           {children}
+          <ToastContainer />
         </ReduxProvider>
       </body>
     </html>
