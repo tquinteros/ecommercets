@@ -74,7 +74,7 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
                                                     <span className="line-through">${cartItem.price}</span>
                                                     <h3 className="text-xl font-bold">
                                                         {discountedPrice && <span> ${discountedPrice.toFixed(2)} </span>}
-                                                        <span>{cartItem.discountPercentage}%</span>
+                                                        <span className="text-lg">| {cartItem.discountPercentage}% OFF</span>
                                                     </h3>
                                                 </h3>
                                             </div>

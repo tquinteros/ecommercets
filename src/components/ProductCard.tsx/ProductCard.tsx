@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { ProductCardProps } from '@/types/types'
 import Image from 'next/image'
@@ -8,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from "@/redux/features/cart"
 import { useAppSelector } from '@/redux/store';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 const ProductCard = ({ product, index }: ProductCardProps) => {
     const router = useRouter();
@@ -50,7 +52,8 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
                     <h3 className='text-2xl font-semibold'><span className='line-through'>${product.price}</span> <span>${getDiscountedPrice(product?.price || 0, product?.discountPercentage || 0)}</span></h3>
                 </div>
                 <div className='flex mt-auto mb-4 gap-4 justify-center'>
-                    <Button className=''>View More</Button>
+                    <Link href={`/products/${product.id}`} className={`inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none`}
+                    >View More</Link>
                     <Button onClick={handleAddToCart} className=''>Add to Cart</Button>
                 </div>
             </div>

@@ -17,12 +17,13 @@ const Header = () => {
     }
 
     return (
-        <header className='sticky w-full z-50 bg-red-500 top-0'>
+        <header className='sticky w-full h-20 flex items-center z-50 bg-black  top-0'>
             <nav className='flex justify-between container mx-auto items-center'>
-                <Link href="/">
-                    <Image alt="LogoHeader" src='/logo.png' width={80} height={80} />
+                <Link href="/" className='hover:opacity-75 text-white duration-300'>
+                    {/* <Image alt="LogoHeader" src='/logo.png' width={80} height={80} /> */}
+                    <h3 className='text-3xl'>CLOTHES</h3>
                 </Link>
-                <ul className='flex gap-8 justify-between items-center'>
+                <ul className='flex gap-8 text-white justify-between items-center'>
                     {
                         navLinks.map((navLink, index) => {
                             return (

@@ -1,16 +1,4 @@
-// export interface Products {
-//     id?: number;
-//     title: string;
-//     price?: number;
-//     description: string;
-//     thumbnail?: string;
-//     discountPercentage?: number;
-//     category: string;
-//     rating: {
-//         rate: number;
-//         count: number;
-//     }
-// }
+
 
 export interface ProductItemProps {
     id?: number;
@@ -20,10 +8,13 @@ export interface ProductItemProps {
     thumbnail?: string;
     discountPercentage?: number;
     category: string;
-    rating: {
-        rate: number;
-        count: number;
-    }
+    images?: string[];
+    stock?: number;
+    rating?: number;
+}
+
+export interface ProductDetailsProps {
+    product: ProductItemProps;
 }
 
 export interface ProductItems {
