@@ -75,7 +75,7 @@ const ProductsTemplate = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-12 gap-8 p-4 md:p-0">
-                        <div className="col-span-3 flex flex-col gap-4">
+                        <div className="col-span-3 sticky max-h-screen top-28 flex flex-col gap-4">
                             <h2 className="text-xl">FILTERS</h2>
                             <input
                                 type="text"
