@@ -35,7 +35,7 @@ const ProductCard = ({ product, index, reverse }: ProductCardProps) => {
 
     return (
         <motion.div
-            className='flex flex-col gap-4 bg-white shadow-md hover:shadow-2xl duration-300 rounded-lg h-[400px] col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3'>
+            className='flex flex-col gap-4 bg-white shadow-md hover:shadow-2xl duration-300 rounded-lg h-[450px] md:h-[400px] col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3'>
             <div className='relative'>
                 <Image alt={product.title} src={product.thumbnail || ''} className='rounded-t-lg border w-full h-[200px] z-0' width={200} height={200} />
                 <span className='text-center'><span className="font-bold bg-black text-white absolute top-2 right-2 backdrop-blur-xl px-4 py-1 rounded-lg text-md">{product.discountPercentage}% OFF</span></span>
@@ -51,7 +51,7 @@ const ProductCard = ({ product, index, reverse }: ProductCardProps) => {
                     <h3 className='text-md font-semibold'>{title}</h3>
                     <h3 className='text-2xl font-semibold'><span className='line-through'>${product.price}</span> <span>${getDiscountedPrice(product?.price || 0, product?.discountPercentage || 0)}</span></h3>
                 </div>
-                <div className={`flex mt-auto mb-4 gap-4 justify-center`}>
+                <div className={`flex flex-col md:flex-row mt-auto mb-4 gap-4 justify-center`}>
                     <Link href={`/products/${product.id}`} className={`inline-flex ${reverse ? "w-full" : ""} items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none`}
                     >View More</Link>
                     {

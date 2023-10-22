@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 import { useAppSelector } from '@/redux/store'
 import Cart from '../Cart/Cart';
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineMenu, AiOutlineClose, AiOutlineShoppingCart } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 
 const Header = () => {
@@ -54,7 +54,7 @@ const Header = () => {
                     initial={{ x: 200 }}
                     animate={{ x: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="md:hidden absolute top-24 right-4 w-[80%] bg-[#ebebeb] border-black border rounded-lg p-8 h-[600px]">
+                    className="md:hidden absolute top-24 right-4 w-[80%] bg-white border-black border rounded-lg p-8 h-[600px]">
                     <ul className='flex flex-col gap-3'>
                         {navLinks.map((navLink, index) => (
                             <li className='border-b border-black' key={index}>
