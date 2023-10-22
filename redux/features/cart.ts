@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { ProductItemProps } from "@/types/types";
+
 type InitialState = {
     value: CartState;
 }

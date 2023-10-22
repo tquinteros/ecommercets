@@ -27,7 +27,6 @@ const FeaturedProducts = () => {
     const getAllProducts = async () => {
         try {
             const { data } = await axios.get('https://dummyjson.com/products');
-            console.log(data.products);
             // filter products by discountPercentage > 10
             const filteredProducts = data.products.filter((product: ProductItemProps) => product.discountPercentage && product.discountPercentage > 10);
             const shuffledProducts = shuffleArray(filteredProducts);

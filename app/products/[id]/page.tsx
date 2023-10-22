@@ -18,7 +18,6 @@ export default function Products({ params }: ProductItems) {
                     `https://dummyjson.com/products/${id}`
                 );
                 setProduct(response.data);
-                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching product details:', error);
             }
