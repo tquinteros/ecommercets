@@ -49,7 +49,7 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
             initial={{ x: 300 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute  bg-white border border-black flex flex-col rounded-lg min-h-[700px] md:min-h-[800px] max-h-[700px] md:max-h-[800px] p-3 overflow-y-auto z-[999] md:w-[500px] w-full top-24 right-0"
+            className="absolute  bg-white border border-black flex flex-col rounded-lg min-h-[700px] md:min-h-[800px] max-h-[700px] md:max-h-[800px] p-3 overflow-y-auto z-[999] md:w-[500px] w-11/12 top-0 md:top-24 right-0"
         >
             <div className="absolute right-2">
                 <AiOutlineClose className="cursor-pointer" onClick={handleCloseCart} size={32} />

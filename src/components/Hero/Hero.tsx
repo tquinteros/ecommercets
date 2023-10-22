@@ -113,7 +113,7 @@ const Hero = () => {
                 >
                     <div className='flex md:col-span-6 col-span-12 flex-col p-8 gap-6 justify-center w-full'>
                         <h3 className='text-5xl'>
-                            SALE!!
+                            OFFER!!
                         </h3>
                         <h3 className='text-4xl'>
                             {featuredProduct?.title}
