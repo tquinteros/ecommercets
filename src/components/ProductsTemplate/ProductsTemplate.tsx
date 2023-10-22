@@ -52,7 +52,7 @@ const ProductsTemplate = () => {
 
     return (
         <div className="my-16">
-            <div className="flex flex-col mb-16 items-center gap-2">
+            <div className="flex flex-col mb-8 md:mb-16 items-center gap-2">
                 <h3 className="font-bold text-4xl">Products</h3>
                 <div className="bg-black w-24 h-0.5"></div>
             </div>
@@ -75,7 +75,7 @@ const ProductsTemplate = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-12 gap-8 p-4 md:p-0">
-                        <div className="col-span-3 sticky max-h-screen top-28 flex flex-col gap-4">
+                        <div className="md:col-span-3 col-span-12 md:sticky md:max-h-screen md:top-28 flex flex-col gap-4">
                             <h2 className="text-xl">FILTERS</h2>
                             <input
                                 type="text"
@@ -114,7 +114,7 @@ const ProductsTemplate = () => {
                                 />
                             </div>
                         </div>
-                        <div className="grid grid-cols-12 gap-3 col-span-9">
+                        <div className="grid grid-cols-12 gap-3 col-span-12 md:col-span-9">
                             {
                                 filteredProducts.map((product, index) => {
                                     return (

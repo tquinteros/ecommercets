@@ -110,7 +110,7 @@ const Hero = () => {
                     className='grid grid-cols-12 gap-8'
                     style={{ height: `calc(100vh - ${headerHeight}px)` }}
                 >
-                    <div className='flex col-span-6 flex-col p-8 gap-6 justify-center w-full'>
+                    <div className='flex md:col-span-6 col-span-12 flex-col p-8 gap-6 justify-center w-full'>
                         <h3 className='text-5xl'>
                             SALE!!
                         </h3>
@@ -131,7 +131,7 @@ const Hero = () => {
                             <Button className='col-span-6 w-full' onClick={handleAddToCart}>Add to Cart</Button>
                         </div>
                     </div>
-                    <div className='col-span-6'>
+                    <div className='md:col-span-6 hidden md:block'>
                         <Image
                             alt="FeaturedProduct"
                             src={'/hero.png'}
