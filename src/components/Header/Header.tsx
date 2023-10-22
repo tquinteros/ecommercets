@@ -68,7 +68,6 @@ const Header = () => {
                                 <Link onClick={() => setIsMenuOpen(false)} href={navLink.href}>{navLink.label}</Link>
                             </li>
                         ))}
-                        <li className='border-b border-black' onClick={handleOpenCart}>Cart ({cartLength})</li>
                     </ul>
                 </motion.div>
             )}

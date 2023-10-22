@@ -16,12 +16,12 @@ const ProductsTemplate = () => {
     const [priceRange, setPriceRange] = useState<PriceRange>([0, 1000]);
     const [categories, setCategories] = useState<Categories>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
+    const [loadingCategories, setLoadingCategories] = useState<boolean>(false);
     const fetchProducts = async () => {
         setLoading(true);
         try {
             const response = await axios.get(
-                `https://dummyjson.com/products?limit=50`
+                `https://dummyjson.com/products?limit=100`
             );
             setProducts(response.data.products);
         } catch (error) {
@@ -31,6 +31,7 @@ const ProductsTemplate = () => {
     };
 
     const fetchCategories = async () => {
+        setLoadingCategories(true)
         try {
             const response = await axios.get(
                 `https://dummyjson.com/products/categories`
@@ -39,6 +40,7 @@ const ProductsTemplate = () => {
         } catch (error) {
             console.error('Error fetching product details:', error);
         }
+        setLoadingCategories(false);
     };
 
     useEffect(() => {
@@ -74,6 +76,16 @@ const ProductsTemplate = () => {
         return isInPriceRange && isMatchSearchQuery && isMatchCategory;
     });
 
+    const [headerHeight, setHeaderHeight] = useState(0);
+
+    useEffect(() => {
+        const header = document.querySelector('header');
+        if (header) {
+            const height = header.getBoundingClientRect().height;
+            setHeaderHeight(height);
+        }
+    }, []);
+
     return (
         <div className="my-16">
             <div className="flex flex-col mb-8 md:mb-16 items-center gap-2">
@@ -99,7 +111,9 @@ const ProductsTemplate = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-12 gap-8 p-4 md:p-0">
-                        <div className="md:col-span-3 col-span-12 md:sticky md:max-h-screen md:top-28 flex flex-col gap-4">
+                        <div className="md:col-span-3 col-span-12 md:sticky md:top-24 flex flex-col gap-4"
+                            style={{ maxHeight: `calc(100vh - ${headerHeight}px)` }}
+                        >
                             <h2 className="text-xl">FILTERS</h2>
                             <input
                                 type="text"
@@ -139,21 +153,25 @@ const ProductsTemplate = () => {
                             </div>
                             <div>
                                 <h2>Categories</h2>
-                                <ul className="flex flex-col gap-1">
-                                    {categories.map((category, index) => (
+                                <ul className="flex flex-col mt-2 gap-1">
+                                    {!loadingCategories ? (categories.map((category, index) => (
                                         <li key={index}>
-                                            <input
-                                                type="checkbox"
-                                                onChange={() => handleCategoryFilter(category)}
-                                                checked={selectedCategories.includes(category)}
-                                            />
-                                            <label className="capitalize">&nbsp;{category}</label>
+                                            <label className="text-lg hover:opacity-75 duration-300 cursor-pointer w-fit capitalize flex gap-2">
+                                                <input
+                                                    type="checkbox"
+                                                    onChange={() => handleCategoryFilter(category)}
+                                                    checked={selectedCategories.includes(category)}
+                                                />
+                                                {category}
+                                            </label>
                                         </li>
-                                    ))}
+                                    ))) : (<div>
+                                        <h2>Loading...</h2>
+                                    </div>)}
                                 </ul>
                             </div>
                         </div>
-                        <div className="grid grid-cols-12 gap-3 col-span-12 md:col-span-9">
+                        <div className="grid mt-32 md:mt-0 grid-cols-12 gap-3 col-span-12 md:col-span-9">
                             {
                                 filteredProducts.length > 0 ? (filteredProducts.map((product, index) => {
                                     return (
