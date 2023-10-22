@@ -42,10 +42,17 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="md:hidden flex items-center">
-                    <button onClick={handleToggleMenu}>
-                        {isMenuOpen ? <AiOutlineClose size={36} color='#fff' /> : <AiOutlineMenu size={36} color='#fff' />}
-                    </button>
+                <div className="md:hidden gap-4 flex items-center">
+                    {
+                        isCartOpen ? <AiOutlineClose onClick={handleOpenCart} size={30} color='#fff' /> :
+                            (
+                                <div className='flex items-center gap-2'>
+                                    <AiOutlineShoppingCart onClick={handleOpenCart} size={30} color='#fff' />
+                                    <span className='text-white text-xl'>({cartLength})</span>
+                                </div>
+                            )
+                    }
+                    {isMenuOpen ? <AiOutlineClose onClick={handleToggleMenu} size={30} color='#fff' /> : <AiOutlineMenu onClick={handleToggleMenu} size={30} color='#fff' />}
                 </div>
             </nav>
             {isCartOpen && <Cart setIsCartOpen={setIsCartOpen} />}
