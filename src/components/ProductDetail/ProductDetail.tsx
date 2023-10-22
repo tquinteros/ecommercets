@@ -37,7 +37,7 @@ const ProductDetail = ({ product }: ProductDetailsProps) => {
         <div className="container flex flex-col gap-16 mt-16 mx-auto">
             <div
                 style={{ minHeight: `calc(100vh - ${headerHeight}px)` }}
-                className="grid border grid-cols-12 content-center md:g justify-items-center gap-6">
+                className="grid grid-cols-12 content-center md:g justify-items-center gap-6">
                 <div className="col-span-12 order-2 md:order-1 flex flex-col gap-4 md:col-span-7">
                     {
                         product.images ? (product.images.map((image, index) => {

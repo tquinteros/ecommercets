@@ -13,7 +13,7 @@ const ProductsTemplate = () => {
     const [products, setProducts] = useState<ProductItemProps[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const [priceRange, setPriceRange] = useState<PriceRange>([0, 200]);
+    const [priceRange, setPriceRange] = useState<PriceRange>([0, 1000]);
     const [categories, setCategories] = useState<Categories>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
@@ -140,14 +140,6 @@ const ProductsTemplate = () => {
                             <div>
                                 <h2>Categories</h2>
                                 <ul className="flex flex-col gap-1">
-                                    <li>
-                                        <input
-                                            type="checkbox"
-                                            onChange={() => handleCategoryFilter("all")}
-                                            checked={selectedCategories.length === categories.length}
-                                        />
-                                        <label className="capitalize">&nbsp;All</label>
-                                    </li>
                                     {categories.map((category, index) => (
                                         <li key={index}>
                                             <input
