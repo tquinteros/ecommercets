@@ -10,11 +10,12 @@ import { AiOutlineClose } from "react-icons/ai";
 import { CartProps } from "@/types/types";
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Cart = ({ setIsCartOpen }: CartProps) => {
     const cart = useAppSelector((state) => state.cartReducer.value.products);
     const dispatch = useDispatch();
-
+    const router = useRouter();
     const handleRemoveItem = (id: number) => {
         dispatch(removeFromCart(id));
         toast.success('Product removed from cart successfully!', {
@@ -38,6 +39,10 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
         });
         return total.toFixed(2);
     };
+
+    const handleCheckout = () => {
+        router.push("/checkout");
+    }
 
     return (
         <motion.div
@@ -103,7 +108,7 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
                             </div>
                             <div className="flex justify-center gap-4">
                                 <Button className="w-48" onClick={() => dispatch(clearCart())}>Remove All</Button>
-                                <Button className="w-48">Checkout</Button>
+                                <Button onClick={handleCheckout} className="w-48">Checkout</Button>
                             </div>
                         </div>
                     ) : (
