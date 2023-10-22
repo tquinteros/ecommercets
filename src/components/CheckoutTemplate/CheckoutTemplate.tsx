@@ -95,16 +95,16 @@ const CheckoutTemplate = () => {
             {
                 cart.length > 0 && (
                     <div className="mt-8 p-2">
-                        <div className="flex gap-4 flex-col">
-                            <div className="flex justify-between items-center gap-6">
+                        <div className="flex gap-8 flex-col">
+                            <div className="flex border-b border-black justify-between items-center gap-6">
                                 <h3 className="text-2xl">Total without discount:</h3>
                                 <h3 className="text-2xl">${calculateTotal2()}</h3>
                             </div>
-                            <div className="flex items-center justify-between gap-6">
+                            <div className="flex border-b border-black items-center justify-between gap-6">
                                 <h3 className="text-2xl">Discount:</h3>
                                 <h3 className="text-2xl">-{calculateSavings()}</h3>
                             </div>
-                            <div className="flex justify-between items-center gap-6">
+                            <div className="flex border-b border-black justify-between items-center gap-6">
                                 <h3 className="text-2xl">Total:</h3>
                                 <h3 className="text-2xl">${calculateTotal()}</h3>
                             </div>
