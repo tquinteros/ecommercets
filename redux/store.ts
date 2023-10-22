@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import authReducer from './features/auth-slice'
 import counterReducer from './features/counter';
 import cartReducer from './features/cart';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 export const store = configureStore({
     reducer: {
-        authReducer,
         counterReducer,
         cartReducer,
     }
