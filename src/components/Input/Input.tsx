@@ -9,7 +9,7 @@ export const Input = ({ label, value, onChange, type, placeholder, className }: 
                 value={value}
                 onChange={onChange}
                 type={type}
-                className={`${className} py-1 px-2 rounded-md`}
+                className={`${className} py-1 border border-black px-2 rounded-md`}
                 placeholder={placeholder}
             />
         </label>
