@@ -42,7 +42,7 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
 
     const handleCheckout = () => {
         handleCloseCart();
-        router.push("/checkout");
+        router.push("/store/checkout");
     }
 
     return (

@@ -13,6 +13,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const cartLength = useAppSelector((state) => state.cartReducer.value.products.length);
+    const isAdmin = useAppSelector((state) => state.authReducer.value.isAdmin);
 
     const handleOpenCart = () => {
         setIsCartOpen(!isCartOpen);
@@ -24,12 +25,19 @@ const Header = () => {
 
     return (
         <header className="sticky w-full h-20 flex items-center z-50 bg-black top-0">
-            <nav className="flex justify-between container mx-auto px-4 md:px-0 items-center">
+            <nav className="flex justify-between relative container mx-auto px-4 md:px-0 items-center">
                 <div className="flex items-center">
-                    <Link href="/" className="hover:opacity-75 text-white duration-300">
-                        <h3 className="text-3xl">CLOTHES</h3>
+                    <Link href="/" className="hover:opacity-75 text-3xl text-white duration-300">
+                        CLOTHES
                     </Link>
                 </div>
+                {
+                    isAdmin && (
+                        <div className='text-white hidden lg:absolute lg:block lg:left-1/2 lg:-translate-x-1/2'>
+                            <Link className='hover:opacity-75 duration-300' href="/admin">ADMIN PANEL</Link>
+                        </div>
+                    )
+                }
                 <div className="hidden md:flex gap-8 text-white justify-between items-center">
                     <ul className='flex gap-10'>
                         {navLinks.map((navLink, index) => (

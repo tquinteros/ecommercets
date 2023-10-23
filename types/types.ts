@@ -34,6 +34,7 @@ export interface ButtonProps {
     onClick?: () => void;
     className?: string;
     disabled?: boolean;
+    type?: "button" | "submit" | "reset";
 }
 
 export interface CartProps {

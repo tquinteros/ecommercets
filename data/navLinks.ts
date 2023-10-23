@@ -1,14 +1,14 @@
 export const navLinks = [
     {
-        href: "/",
+        href: "/store",
         label: "Home",
     },
     {
-        href: "/products",
+        href: "/store/products",
         label: "Products",
     },
     {
-        href: "#featured",
-        label: "Contact",
+        href: "/login",
+        label: "Log In",
     }
 ];

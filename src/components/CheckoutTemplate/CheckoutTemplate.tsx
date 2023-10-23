@@ -43,7 +43,7 @@ const CheckoutTemplate = () => {
             toast.error('Cart is empty!', {
                 position: "bottom-center",
             });
-            router.push("/");
+            router.push("/store");
         }
     }, [cart.length]);
 
