@@ -27,7 +27,7 @@ const Header = () => {
         <header className="sticky w-full h-20 flex items-center z-50 bg-black top-0">
             <nav className="flex justify-between relative container mx-auto px-4 md:px-0 items-center">
                 <div className="flex items-center">
-                    <Link href="/" className="hover:opacity-75 text-3xl text-white duration-300">
+                    <Link href="/store" className="hover:opacity-75 text-3xl text-white duration-300">
                         CLOTHES
                     </Link>
                 </div>

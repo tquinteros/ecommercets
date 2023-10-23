@@ -12,10 +12,10 @@ const AdminTemplate = () => {
     useEffect(() => {
         if (!isAdmin || !isAuthenticated) {
             router.push('/store');
+            toast.error('You are not authorized to view this page!', {
+                position: "bottom-center",
+            })
         }
-        toast.error('You are not authorized to view this page!', {
-            position: "bottom-center",
-        })
     }, [router]);
 
     return (
