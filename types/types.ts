@@ -40,3 +40,12 @@ export interface ButtonProps {
 export interface CartProps {
     setIsCartOpen: (value: boolean) => void;
 }
+
+export interface InputProps {
+    label: string;
+    value?: string | number;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder?: string;
+    type?: string;
+    className?: string;
+}
