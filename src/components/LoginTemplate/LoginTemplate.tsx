@@ -81,7 +81,7 @@ const LoginTemplate = () => {
                         <span>Password:</span>
                         <input
                             onChange={(e) => setPassword(e.target.value)}
-                            className="p-2 rounded-md border border-black px-3" required type="text" />
+                            className="p-2 rounded-md border border-black px-3" required type="password" />
                     </label>
                     <Button type="submit">Log In</Button>
                 </div>

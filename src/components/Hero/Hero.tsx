@@ -128,7 +128,7 @@ const Hero = () => {
                             </span>
                         </span>
                         <div className='grid grid-cols-12 gap-8 justify-center'>
-                            <Link href={`/products/1`} className='col-span-6 w-full inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none'>View More</Link>
+                            <Link href={`/store/products/1`} className='col-span-6 w-full inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none'>View More</Link>
                             <Button className='col-span-6 w-full' onClick={handleAddToCart}>Add to Cart</Button>
                         </div>
                     </div>

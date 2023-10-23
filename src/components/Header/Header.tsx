@@ -6,14 +6,20 @@ import { useAppSelector } from '@/redux/store'
 import Cart from '../Cart/Cart';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineShoppingCart } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import { logOut } from '@/redux/features/auth';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
 
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const dispatch = useDispatch();
+    const router = useRouter();
     const cartLength = useAppSelector((state) => state.cartReducer.value.products.length);
     const isAdmin = useAppSelector((state) => state.authReducer.value.isAdmin);
+    const username = useAppSelector((state) => state.authReducer.value.username);
+    const isAuthenticated = useAppSelector((state) => state.authReducer.value.isAuthenticated);
 
     const handleOpenCart = () => {
         setIsCartOpen(!isCartOpen);
@@ -21,6 +27,11 @@ const Header = () => {
 
     const handleToggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleLogOut = () => {
+        dispatch(logOut());
+        router.push("/login")
     };
 
     return (
@@ -38,6 +49,12 @@ const Header = () => {
                         </div>
                     )
                 }
+                {
+                    !isAdmin && isAuthenticated && (
+                        <div className='text-white text-lg hidden lg:absolute lg:block lg:left-1/2 lg:-translate-x-1/2'>
+                            Welcome, {username}
+                        </div>
+                    )}
                 <div className="hidden md:flex gap-8 text-white justify-between items-center">
                     <ul className='flex gap-10'>
                         {navLinks.map((navLink, index) => (
@@ -47,6 +64,15 @@ const Header = () => {
                         ))}
                         <li onClick={handleOpenCart} className="hover:opacity-75 cursor-pointer duration-300">
                             Cart ({cartLength})
+                        </li>
+                        <li className="hover:opacity-75 cursor-pointer duration-300">
+                            {
+                                isAuthenticated ? (
+                                    <span onClick={handleLogOut}>Log Out</span>
+                                ) : (
+                                    <Link href="/login">Log In</Link>
+                                )
+                            }
                         </li>
                     </ul>
                 </div>
@@ -64,22 +90,24 @@ const Header = () => {
                 </div>
             </nav>
             {isCartOpen && <Cart setIsCartOpen={setIsCartOpen} />}
-            {isMenuOpen && (
-                <motion.div
-                    initial={{ x: 200 }}
-                    animate={{ x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="md:hidden absolute top-24 right-4 w-[80%] bg-white border-black border rounded-lg p-8 h-[600px]">
-                    <ul className='flex flex-col gap-3'>
-                        {navLinks.map((navLink, index) => (
-                            <li className='border-b border-black' key={index}>
-                                <Link onClick={() => setIsMenuOpen(false)} href={navLink.href}>{navLink.label}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </motion.div>
-            )}
-        </header>
+            {
+                isMenuOpen && (
+                    <motion.div
+                        initial={{ x: 200 }}
+                        animate={{ x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="md:hidden absolute top-24 right-4 w-[80%] bg-white border-black border rounded-lg p-8 h-[600px]">
+                        <ul className='flex flex-col gap-3'>
+                            {navLinks.map((navLink, index) => (
+                                <li className='border-b border-black' key={index}>
+                                    <Link onClick={() => setIsMenuOpen(false)} href={navLink.href}>{navLink.label}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                )
+            }
+        </header >
     );
 };
 

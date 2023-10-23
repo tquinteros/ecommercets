@@ -7,8 +7,4 @@ export const navLinks = [
         href: "/store/products",
         label: "Products",
     },
-    {
-        href: "/login",
-        label: "Log In",
-    }
 ];

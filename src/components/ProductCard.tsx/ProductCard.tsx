@@ -52,7 +52,7 @@ const ProductCard = ({ product, index, reverse }: ProductCardProps) => {
                     <h3 className='text-2xl font-semibold'><span className='line-through'>${product.price}</span> <span>${getDiscountedPrice(product?.price || 0, product?.discountPercentage || 0)}</span></h3>
                 </div>
                 <div className={`flex flex-col md:flex-row mt-auto mb-4 gap-4 justify-center`}>
-                    <Link href={`/products/${product.id}`} className={`inline-flex ${reverse ? "w-full" : ""} items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none`}
+                    <Link href={`/store/products/${product.id}`} className={`inline-flex ${reverse ? "w-full" : ""} items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-300 bg-black rounded-lg hover:opacity-75 focus:shadow-outline focus:outline-none`}
                     >View More</Link>
                     {
                         !reverse && (
