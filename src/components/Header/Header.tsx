@@ -31,7 +31,7 @@ const Header = () => {
 
     const handleLogOut = () => {
         dispatch(logOut());
-        router.push("/login")
+        router.push("/")
     };
 
     return (
@@ -70,7 +70,7 @@ const Header = () => {
                                 isAuthenticated ? (
                                     <span onClick={handleLogOut}>Log Out</span>
                                 ) : (
-                                    <Link href="/login">Log In</Link>
+                                    <Link href="/">Log In</Link>
                                 )
                             }
                         </li>

@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useAppSelector, AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { logIn, logOut, toggleAdmin } from "@/redux/features/auth"
+import Link from "next/link";
 
 
 const LoginTemplate = () => {
@@ -85,6 +86,7 @@ const LoginTemplate = () => {
                     </label>
                     <Button type="submit">Log In</Button>
                 </div>
+                <Link className="underline hover:opacity-75 duration-300" href="/store">Proceed without user</Link>
             </form>
 
         </div>
