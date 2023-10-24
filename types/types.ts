@@ -48,4 +48,5 @@ export interface InputProps {
     placeholder?: string;
     type?: string;
     className?: string;
+    readonly?: boolean;
 }

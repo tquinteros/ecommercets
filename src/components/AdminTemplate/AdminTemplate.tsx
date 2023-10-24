@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CreateProduct from "../CreateProduct/CreateProduct";
+import EditProduct from "../EditProduct/EditProduct";
+import DeleteProduct from "../DeleteProduct/DeleteProduct";
 
 const AdminTemplate = () => {
 
@@ -38,13 +40,13 @@ const AdminTemplate = () => {
                 <div className="flex mt-8 justify-center gap-12">
                     <h4
                         onClick={() => handleSelectTab("add")}
-                        className={`${selectedTab === "add" ? "bg-black text-white" : "hover:opacity-75"} cursor-pointer border border-black rounded-md px-4 py-2 duration-300`}>Create a Product</h4>
+                        className={`${selectedTab === "add" ? "bg-black text-white" : "hover:opacity-75"} cursor-pointer border border-black rounded-md px-4 py-2 duration-300`}>Create Product</h4>
                     <h4
                         onClick={() => handleSelectTab("edit")}
-                        className={`${selectedTab === "edit" ? "bg-black text-white" : "hover:opacity-75"} cursor-pointer border border-black rounded-md px-4 py-2 duration-300`}>Edit a Product</h4>
+                        className={`${selectedTab === "edit" ? "bg-black text-white" : "hover:opacity-75"} cursor-pointer border border-black rounded-md px-4 py-2 duration-300`}>Edit Product</h4>
                     <h4
                         onClick={() => handleSelectTab("delete")}
-                        className={`${selectedTab === "delete" ? "bg-black text-white" : "hover:opacity-75"} cursor-pointer border border-black rounded-md px-4 py-2 duration-300`}>Delete a Product</h4>
+                        className={`${selectedTab === "delete" ? "bg-black text-white" : "hover:opacity-75"} cursor-pointer border border-black rounded-md px-4 py-2 duration-300`}>Delete Product</h4>
                 </div>
                 {
                     selectedTab === "add" && (
@@ -53,12 +55,12 @@ const AdminTemplate = () => {
                 }
                 {
                     selectedTab === "edit" && (
-                        <h3>asdasd</h3>
+                        <EditProduct />
                     )
                 }
                 {
                     selectedTab === "delete" && (
-                        <h3>asdasd</h3>
+                        <DeleteProduct />
                     )
                 }
             </div>
