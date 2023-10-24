@@ -103,6 +103,15 @@ const Header = () => {
                                     <Link onClick={() => setIsMenuOpen(false)} href={navLink.href}>{navLink.label}</Link>
                                 </li>
                             ))}
+                            {
+                                isAdmin && (
+                                    <li className='border-b border-black'>
+                                        <Link
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className='hover:opacity-75 duration-300' href="/admin">Admin Panel</Link>
+                                    </li>
+                                )
+                            }
                         </ul>
                     </motion.div>
                 )
