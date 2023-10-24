@@ -72,7 +72,6 @@ const DeleteProduct = () => {
         const selectedProduct = products.find((product) => product.id === selectedProductId);
         if (selectedProduct) {
             setProduct(selectedProduct);
-            console.log(selectedProduct);
         }
     };
 

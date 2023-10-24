@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 const EditProduct = () => {
     const [products, setProducts] = useState<ProductItemProps[]>([]);
     const [product, setProduct] = useState<ProductItemProps>({
-        id: 0,
         title: "",
         price: 1,
         description: "",
@@ -35,9 +34,15 @@ const EditProduct = () => {
         }
         setLoading(true);
         try {
-            const response = await axios.delete(`https://dummyjson.com/products/${product.id}`);
+            const response = await axios.put(`https://dummyjson.com/products/${product.id}`, {
+                title: product.title,
+                price: product.price,
+                description: product.description,
+                category: product.category,
+                thumbnail: product.thumbnail,
+            });
             if (response.status === 200) {
-                toast.success("Product deleted successfully", {
+                toast.success("Product edited successfully", {
                     position: "bottom-center"
                 });
             } else {
@@ -72,7 +77,6 @@ const EditProduct = () => {
         const selectedProduct = products.find((product) => product.id === selectedProductId);
         if (selectedProduct) {
             setProduct(selectedProduct);
-            console.log(selectedProduct);
         }
     };
 
@@ -83,22 +87,13 @@ const EditProduct = () => {
     return (
         <>
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-                <select className="w-[30%] px-2 py-2 rounded-md" onChange={handleSelectProduct}>
+                <select className="w-[30%] border border-black px-2 py-2 rounded-md" onChange={handleSelectProduct}>
                     {products.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}
                         </option>
                     ))}
                 </select>
-                <Input
-                    value={product.id}
-                    label="id"
-                    onChange={(e) => setProduct({ ...product, id: parseInt(e.target.value) })}
-                    type="text"
-                    readonly={true}
-                    className="w-[30%]"
-                    placeholder="ID of the product"
-                />
                 <Input
                     value={product.title}
                     label="Title"
