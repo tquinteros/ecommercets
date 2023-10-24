@@ -94,15 +94,6 @@ const DeleteProduct = () => {
                     ))}
                 </select>
                 <Input
-                    value={product.id}
-                    label="id"
-                    onChange={(e) => setProduct({ ...product, id: parseInt(e.target.value) })}
-                    type="text"
-                    readonly={true}
-                    className="w-full md:w-[70%] xl:w-[50%]"
-                    placeholder="ID of the product"
-                />
-                <Input
                     value={product.title}
                     label="Title"
                     onChange={(e) => setProduct({ ...product, title: e.target.value })}
