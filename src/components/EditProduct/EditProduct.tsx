@@ -88,7 +88,10 @@ const EditProduct = () => {
         <>
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                 <span>Select Product</span>
-                <select className="w-full md:w-[70%] xl:w-[50%] border border-black px-2 py-2 rounded-md" onChange={handleSelectProduct}>
+                <select placeholder="Select Product" className="w-full md:w-[70%] xl:w-[50%] border border-black px-2 py-2 rounded-md" onChange={handleSelectProduct}>
+                    <option value="select">
+                        Select Product
+                    </option>
                     {products.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}

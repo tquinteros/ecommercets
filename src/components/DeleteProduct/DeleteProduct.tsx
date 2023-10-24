@@ -84,6 +84,9 @@ const DeleteProduct = () => {
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                 <span>Select a Product</span>
                 <select className="w-full md:w-[70%] xl:w-[50%] border-black border px-2 py-2 rounded-md" onChange={handleSelectProduct}>
+                    <option>
+                        Select Product
+                    </option>
                     {products.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}
