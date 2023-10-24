@@ -61,7 +61,7 @@ const CreateProduct = () => {
                     label="Title"
                     onChange={(e) => setProduct({ ...product, title: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Name of the product"
                 />
                 <Input
@@ -71,7 +71,7 @@ const CreateProduct = () => {
                         setProduct({ ...product, price: parseInt(e.target.value) })
                     }
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Price of the product"
                 />
                 <Input
@@ -79,7 +79,7 @@ const CreateProduct = () => {
                     label="Description"
                     onChange={(e) => setProduct({ ...product, description: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Name of the product"
                 />
                 <Input
@@ -87,7 +87,7 @@ const CreateProduct = () => {
                     label="Category"
                     onChange={(e) => setProduct({ ...product, category: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Category"
                 />
                 <Input
@@ -95,10 +95,10 @@ const CreateProduct = () => {
                     label="Thumbnail"
                     onChange={(e) => setProduct({ ...product, thumbnail: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Thumbnail"
                 />
-                <Button disabled={loading} className="w-[30%] h-10 mt-2" type="submit">Create</Button>
+                <Button disabled={loading} className="w-full md:w-[70%] xl:w-[50%] h-10 mt-2" type="submit">Create</Button>
             </form>
         </>
     )

@@ -29,7 +29,7 @@ const AdminTemplate = () => {
 
     return (
         <div className="my-16">
-            <div className="flex gap-8 flex-col">
+            <div className="flex p-4 lg:p-0 gap-8 flex-col">
                 <div className="flex flex-col items-center gap-2">
                     <h3 className="font-bold text-4xl">Admin Panel</h3>
                     <div className="bg-black w-24 h-0.5"></div>
@@ -37,7 +37,7 @@ const AdminTemplate = () => {
                 <div>
                     <p>Welcome, here you can <b>create, delete and edit products,</b> however these <b>changes will not be reflected in the front</b> but you will be able to see the status in <b>&apos;Network&apos;</b> in the developer console, <b>this is because I am using a public fakeapi</b> (https://dummyjson.com/products) and <b>not a real database.</b></p>
                 </div>
-                <div className="flex mt-8 justify-center gap-12">
+                <div className="flex md:flex-row flex-col mt-8 justify-center gap-6 md:gap-12">
                     <h4
                         onClick={() => handleSelectTab("add")}
                         className={`${selectedTab === "add" ? "bg-black text-white" : "hover:opacity-75"} cursor-pointer border border-black rounded-md px-4 py-2 duration-300`}>Create Product</h4>

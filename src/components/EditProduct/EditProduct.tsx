@@ -87,7 +87,8 @@ const EditProduct = () => {
     return (
         <>
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-                <select className="w-[30%] border border-black px-2 py-2 rounded-md" onChange={handleSelectProduct}>
+                <span>Select Product</span>
+                <select className="w-full md:w-[70%] xl:w-[50%] border border-black px-2 py-2 rounded-md" onChange={handleSelectProduct}>
                     {products.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}
@@ -95,21 +96,13 @@ const EditProduct = () => {
                     ))}
                 </select>
                 <Input
-                    value={product.title}
-                    label="Title"
-                    onChange={(e) => setProduct({ ...product, title: e.target.value })}
-                    type="text"
-                    className="w-[30%]"
-                    placeholder="Name of the product"
-                />
-                <Input
                     value={product.price}
                     label="Price"
                     onChange={(e) =>
                         setProduct({ ...product, price: parseInt(e.target.value) })
                     }
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Price of the product"
                 />
                 <Input
@@ -117,7 +110,7 @@ const EditProduct = () => {
                     label="Description"
                     onChange={(e) => setProduct({ ...product, description: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Name of the product"
                 />
                 <Input
@@ -125,7 +118,7 @@ const EditProduct = () => {
                     label="Category"
                     onChange={(e) => setProduct({ ...product, category: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Category"
                 />
                 <Input
@@ -133,10 +126,10 @@ const EditProduct = () => {
                     label="Thumbnail"
                     onChange={(e) => setProduct({ ...product, thumbnail: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Thumbnail"
                 />
-                <Button disabled={loading} className="w-[30%] h-10 mt-2" type="submit">Edit</Button>
+                <Button disabled={loading} className="w-full md:w-[70%] xl:w-[50%] h-10 mt-2" type="submit">Edit</Button>
             </form>
         </>
     )

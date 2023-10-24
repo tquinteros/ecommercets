@@ -82,7 +82,8 @@ const DeleteProduct = () => {
     return (
         <>
             <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-                <select className="w-[30%] border-black border px-2 py-2 rounded-md" onChange={handleSelectProduct}>
+                <span>Select a Product</span>
+                <select className="w-full md:w-[70%] xl:w-[50%] border-black border px-2 py-2 rounded-md" onChange={handleSelectProduct}>
                     {products.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}
@@ -95,7 +96,7 @@ const DeleteProduct = () => {
                     onChange={(e) => setProduct({ ...product, id: parseInt(e.target.value) })}
                     type="text"
                     readonly={true}
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="ID of the product"
                 />
                 <Input
@@ -104,7 +105,7 @@ const DeleteProduct = () => {
                     onChange={(e) => setProduct({ ...product, title: e.target.value })}
                     type="text"
                     readonly={true}
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Name of the product"
                 />
                 <Input
@@ -115,7 +116,7 @@ const DeleteProduct = () => {
                     }
                     type="text"
                     readonly={true}
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Price of the product"
                 />
                 <Input
@@ -124,7 +125,7 @@ const DeleteProduct = () => {
                     readonly={true}
                     onChange={(e) => setProduct({ ...product, description: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Name of the product"
                 />
                 <Input
@@ -133,7 +134,7 @@ const DeleteProduct = () => {
                     readonly={true}
                     onChange={(e) => setProduct({ ...product, category: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Category"
                 />
                 <Input
@@ -142,10 +143,10 @@ const DeleteProduct = () => {
                     readonly={true}
                     onChange={(e) => setProduct({ ...product, thumbnail: e.target.value })}
                     type="text"
-                    className="w-[30%]"
+                    className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Thumbnail"
                 />
-                <Button disabled={loading} className="w-[30%] h-10 mt-2" type="submit">Delete</Button>
+                <Button disabled={loading} className="w-full md:w-[70%] xl:w-[50%] h-10 mt-2" type="submit">Delete</Button>
             </form>
         </>
     )
