@@ -36,8 +36,13 @@ export const products = createSlice({
         addProduct: (state, action: PayloadAction<ProductItemProps>) => {
             state.value.products.push(action.payload);
         },
+        findProductById: (state, action: PayloadAction<number | string>) => {
+            const productId = action.payload;
+            const foundProduct = state.value.products.find(product => product.id === productId);
+            // Aquí puedes hacer algo con el producto encontrado, como devolverlo o actualizar un estado específico.
+        },
     }
 })
 
-export const { saveProducts, deleteProduct, editProduct, addProduct } = products.actions;
+export const { saveProducts, deleteProduct, editProduct, addProduct, findProductById } = products.actions;
 export default products.reducer;

@@ -6,27 +6,39 @@ import axios from 'axios';
 import { ProductItems, ProductItemProps } from "@/types/types";
 import { Oval } from "react-loader-spinner";
 import ProductDetail from "@/src/components/ProductDetail/ProductDetail";
+import { useAppSelector } from "@/redux/store";
+import { useDispatch } from "react-redux";
 
 export default function Products({ params }: ProductItems) {
     const { id } = params;
     const [product, setProduct] = useState<ProductItemProps | null>(null);
-
+    const allProducts = useAppSelector((state) => state.productsReducer.value.products);
+    const dispatch = useDispatch();
+    
     useEffect(() => {
-        const fetchMovieDetails = async () => {
-            try {
-                const response = await axios.get(
-                    `https://dummyjson.com/products/${id}`
-                );
-                setProduct(response.data);
-            } catch (error) {
-                console.error('Error fetching product details:', error);
-            }
-        };
-
-        if (id) {
-            fetchMovieDetails();
+        console.log("allProducts", allProducts)
+        const foundProduct = allProducts.find(product => product.id === parseInt(id));
+        if (foundProduct) {
+            setProduct(foundProduct);
         }
-    }, [id]);
+    }, [id, allProducts]);
+
+    // useEffect(() => {
+    //     const fetchMovieDetails = async () => {
+    //         try {
+    //             const response = await axios.get(
+    //                 `https://dummyjson.com/products/${id}`
+    //             );
+    //             setProduct(response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching product details:', error);
+    //         }
+    //     };
+
+    //     if (id) {
+    //         fetchMovieDetails();
+    //     }
+    // }, [id]);
 
     useEffect(() => {
         window.scrollTo(0, 0);

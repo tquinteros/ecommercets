@@ -38,20 +38,8 @@ const FeaturedProducts = () => {
         }
     }
 
-    const saveAllProducts = async () => {
-        try {
-            const response = await axios.get(
-                `https://dummyjson.com/products?limit=100`
-            );
-            dispatch(saveProducts(response.data.products));
-        } catch (error) {
-            console.error('Error fetching product details:', error);
-        }
-    }
-
     useEffect(() => {
         getAllProducts();
-        saveAllProducts();
     }, []);
 
     return (

@@ -9,12 +9,18 @@ import { addProduct } from "@/redux/features/products";
 import { useDispatch } from "react-redux";
 const CreateProduct = () => {
     const dispatch = useDispatch();
+
+    const generateRandomId = (): number => {
+        return Math.floor(Math.random() * 999900) + 101;
+    };
+
     const [product, setProduct] = useState<ProductItemProps>({
         title: "",
         price: 1,
         description: "",
         category: "",
         thumbnail: "",
+        id: generateRandomId(),
     });
 
     const [loading, setLoading] = useState<boolean>(false);
