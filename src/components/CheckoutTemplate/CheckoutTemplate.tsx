@@ -48,9 +48,6 @@ const CheckoutTemplate = () => {
         }
     }, [cart.length]);
 
-    useEffect(() => {
-        console.log(products)
-    }, []);
 
     return (
         <div className="my-16">
