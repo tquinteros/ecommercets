@@ -2,6 +2,6 @@
 
 module.exports = {
     images: {
-      domains: ['fakestoreapi.com', 'i.dummyjson.com'],
+      domains: ['fakestoreapi.com', 'i.dummyjson.com', 'localhost'],
     },
   };

@@ -5,9 +5,10 @@ import Input from "../Input/Input";
 import { ProductItemProps } from "@/types/types";
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
-
+import { addProduct } from "@/redux/features/products";
+import { useDispatch } from "react-redux";
 const CreateProduct = () => {
-
+    const dispatch = useDispatch();
     const [product, setProduct] = useState<ProductItemProps>({
         title: "",
         price: 1,
@@ -36,6 +37,7 @@ const CreateProduct = () => {
         try {
             const response = await axios.post("https://dummyjson.com/products/add", product);
             if (response.status === 200) {
+                dispatch(addProduct(product));
                 toast.success("Product created successfully", {
                     position: "bottom-center"
                 });

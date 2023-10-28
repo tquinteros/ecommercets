@@ -3,9 +3,10 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { ProductItemProps } from "@/types/types";
 import ProductCard from "../ProductCard.tsx/ProductCard";
-
+import { saveProducts } from "@/redux/features/products";
+import { useDispatch } from "react-redux";
 const FeaturedProducts = () => {
-
+    const dispatch = useDispatch();
     const [products, setProducts] = useState<ProductItemProps[]>([]);
 
     function shuffleArray(array: ProductItemProps[]) {
@@ -37,8 +38,20 @@ const FeaturedProducts = () => {
         }
     }
 
+    const saveAllProducts = async () => {
+        try {
+            const response = await axios.get(
+                `https://dummyjson.com/products?limit=100`
+            );
+            dispatch(saveProducts(response.data.products));
+        } catch (error) {
+            console.error('Error fetching product details:', error);
+        }
+    }
+
     useEffect(() => {
         getAllProducts();
+        saveAllProducts();
     }, []);
 
     return (
