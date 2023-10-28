@@ -39,24 +39,24 @@ const DeleteProduct = () => {
             return;
         }
         setLoading(true);
-        try {
-            const response = await axios.delete(`https://dummyjson.com/products/${product.id}`);
-            if (response.status === 200) {
-                dispatch(deleteProduct(product.id as number));
-                toast.success("Product deleted successfully", {
-                    position: "bottom-center"
-                });
-            } else {
-                toast.error("Something went wrong", {
-                    position: "bottom-center"
-                });
-            }
-        } catch (error) {
-            console.log(error);
-            toast.error("Something went wrong", {
-                position: "bottom-center"
-            });
-        }
+        // try {
+        //     const response = await axios.delete(`https://dummyjson.com/products/${product.id}`);
+        //     if (response.status === 200) {
+        //         toast.success("Product deleted successfully", {
+        //             position: "bottom-center"
+        //         });
+        //     } else {
+        //         toast.error("Something went wrong", {
+        //             position: "bottom-center"
+        //         });
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        //     toast.error("Something went wrong", {
+        //         position: "bottom-center"
+        //     });
+        // }
+        dispatch(deleteProduct(product.id as number));
         setLoading(false);
     };
 
@@ -75,15 +75,15 @@ const DeleteProduct = () => {
 
     const handleSelectProduct = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedProductId = parseInt(e.target.value);
-        const selectedProduct = products.find((product) => product.id === selectedProductId);
+        const selectedProduct = allProducts.find((product) => product.id === selectedProductId);
         if (selectedProduct) {
             setProduct(selectedProduct);
         }
     };
 
-    useEffect(() => {
-        fetchProducts();
-    }, []);
+    // useEffect(() => {
+    //     fetchProducts();
+    // }, []);
 
     return (
         <>
