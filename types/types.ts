@@ -1,7 +1,7 @@
 
 
 export interface ProductItemProps {
-    id?: number | string;
+    id?: number;
     title: string;
     price?: number;
     description: string;

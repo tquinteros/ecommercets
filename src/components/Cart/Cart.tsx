@@ -57,11 +57,11 @@ const Cart = ({ setIsCartOpen }: CartProps) => {
             </div>
             <ul className="p-4  max-h-[600px] overflow-y-auto mt-12 flex flex-col gap-6">
                 {
-                    cart.map((cartItem, index) => {
+                    cart.map((cartItem) => {
                         if (cartItem.price && cartItem.discountPercentage) {
                             const discountedPrice = cartItem.price * (1 - cartItem.discountPercentage / 100);
                             return (
-                                <li className="flex justify-between gap-4" key={index}>
+                                <li className="flex justify-between gap-4" key={cartItem.id}>
                                     <div className="flex gap-4">
                                         {cartItem.thumbnail ? (
                                             <Image

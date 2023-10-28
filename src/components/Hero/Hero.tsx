@@ -19,6 +19,7 @@ const Hero = () => {
     const [imageWidth, setImageWidth] = useState<number | null>(null);
     const [featuredProduct, setFeaturedProduct] = useState<ProductItemProps | null>(null);
     const [loading, setLoading] = useState(true);
+    const cart = useAppSelector((state) => state.cartReducer.value.products);
 
     const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -28,6 +29,7 @@ const Hero = () => {
             const height = header.getBoundingClientRect().height;
             setHeaderHeight(height);
         }
+        console.log("cart", cart)
     }, []);
 
     const getFeaturedProduct = async () => {

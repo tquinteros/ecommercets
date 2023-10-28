@@ -18,6 +18,7 @@ const CreateProduct = () => {
         title: "",
         price: 1,
         description: "",
+        discountPercentage: 0,
         category: "",
         thumbnail: "",
         id: generateRandomId(),
@@ -87,6 +88,16 @@ const CreateProduct = () => {
                     type="text"
                     className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Price of the product"
+                />
+                <Input
+                    value={product.discountPercentage}
+                    label="Discount Percentage"
+                    onChange={(e) =>
+                        setProduct({ ...product, discountPercentage: parseInt(e.target.value) })
+                    }
+                    type="text"
+                    className="w-full md:w-[70%] xl:w-[50%]"
+                    placeholder="Discount of the product"
                 />
                 <Input
                     value={product.description}
