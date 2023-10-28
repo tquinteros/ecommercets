@@ -57,6 +57,9 @@ const DeleteProduct = () => {
         //     });
         // }
         dispatch(deleteProduct(product.id as number));
+        toast.success("Product deleted successfully", {
+            position: "bottom-center"
+        });
         setLoading(false);
     };
 
