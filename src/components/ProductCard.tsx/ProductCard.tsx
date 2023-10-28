@@ -14,9 +14,6 @@ import Link from 'next/link';
 const ProductCard = ({ product, index, reverse }: ProductCardProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
-    const handlePushToProduct = () => {
-        router.push(`/products/${product.id}`)
-    }
 
     const getDiscountedPrice = (price: number, discountPercentage: number) => {
         const discountAmount = (price * discountPercentage) / 100;

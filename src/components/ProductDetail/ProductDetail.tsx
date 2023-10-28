@@ -51,7 +51,7 @@ const ProductDetail = ({ product }: ProductDetailsProps) => {
                 </div>
                 <div
                     style={{ maxHeight: `calc(100vh - ${headerHeight}px)` }}
-                    className="col-span-12 p-8 order-1 md:order-2 md:sticky md:top-20 flex flex-col gap-6 md:col-span-5">
+                    className="col-span-12 p-8 order-1 md:order-2 md:sticky md:top-20 flex flex-col gap-6 md:col-span-5 md:w-full">
                     <h3 className="text-3xl">{product.title}</h3>
                     <h3 className="text-lg">{product.description}</h3>
                     <div>

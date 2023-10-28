@@ -3,9 +3,10 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { ProductItemProps } from "@/types/types";
 import ProductCard from "../ProductCard.tsx/ProductCard";
-
+import { saveProducts } from "@/redux/features/products";
+import { useDispatch } from "react-redux";
 const FeaturedProducts = () => {
-
+    const dispatch = useDispatch();
     const [products, setProducts] = useState<ProductItemProps[]>([]);
 
     function shuffleArray(array: ProductItemProps[]) {

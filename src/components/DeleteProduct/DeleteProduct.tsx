@@ -5,6 +5,9 @@ import Input from "../Input/Input";
 import { ProductItemProps } from "@/types/types";
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
+import { deleteProduct } from "@/redux/features/products";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/redux/store";
 
 const DeleteProduct = () => {
     const [products, setProducts] = useState<ProductItemProps[]>([]);
@@ -16,7 +19,9 @@ const DeleteProduct = () => {
         category: "",
         thumbnail: "",
     });
+    const allProducts = useAppSelector((state) => state.productsReducer.value.products);
 
+    const dispatch = useDispatch();
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,6 +42,7 @@ const DeleteProduct = () => {
         try {
             const response = await axios.delete(`https://dummyjson.com/products/${product.id}`);
             if (response.status === 200) {
+                dispatch(deleteProduct(product.id as number));
                 toast.success("Product deleted successfully", {
                     position: "bottom-center"
                 });
@@ -87,7 +93,7 @@ const DeleteProduct = () => {
                     <option>
                         Select Product
                     </option>
-                    {products.map((product) => (
+                    {allProducts.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}
                         </option>

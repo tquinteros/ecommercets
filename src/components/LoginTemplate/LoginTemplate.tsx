@@ -7,7 +7,8 @@ import { useAppSelector, AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { logIn, logOut, toggleAdmin } from "@/redux/features/auth"
 import Link from "next/link";
-
+import axios from "axios";
+import { saveProducts } from "@/redux/features/products";
 
 const LoginTemplate = () => {
     const router = useRouter();
@@ -17,6 +18,17 @@ const LoginTemplate = () => {
     const dispatch = useDispatch<AppDispatch>();
     const isAuthenticated = useAppSelector((state: any) => state.authReducer.value.isAuthenticated);
 
+    const saveAllProducts = async () => {
+        try {
+            const response = await axios.get(
+                `https://dummyjson.com/products?limit=100`
+            );
+            dispatch(saveProducts(response.data.products));
+        } catch (error) {
+            console.error('Error fetching product details:', error);
+        }
+    }
+    
     const users = [
         {
             username: "admin",
@@ -31,7 +43,7 @@ const LoginTemplate = () => {
     ]
 
     useEffect(() => {
-
+        saveAllProducts();
         const header = document.querySelector('header');
         if (header) {
             const height = header.getBoundingClientRect().height;

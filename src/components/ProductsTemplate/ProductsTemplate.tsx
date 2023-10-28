@@ -5,9 +5,11 @@ import axios from 'axios';
 import { ProductItemProps } from "@/types/types";
 import ProductCard from "../ProductCard.tsx/ProductCard";
 import { Oval } from "react-loader-spinner";
-
+import { saveProducts } from "@/redux/features/products";
+import { useAppSelector } from "@/redux/store";
 type PriceRange = [number, number];
 type Categories = string[];
+
 const ProductsTemplate = () => {
 
     const [products, setProducts] = useState<ProductItemProps[]>([]);
@@ -15,8 +17,10 @@ const ProductsTemplate = () => {
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [priceRange, setPriceRange] = useState<PriceRange>([0, 1000]);
     const [categories, setCategories] = useState<Categories>([]);
+    const allProducts = useAppSelector((state) => state.productsReducer.value.products);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [loadingCategories, setLoadingCategories] = useState<boolean>(false);
+    const router = useRouter();
     const fetchProducts = async () => {
         setLoading(true);
         try {
@@ -46,6 +50,9 @@ const ProductsTemplate = () => {
     useEffect(() => {
         fetchProducts();
         fetchCategories();
+        if (allProducts.length === 0) {
+            router.push('/store')
+        }
     }, []);
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,6 +74,16 @@ const ProductsTemplate = () => {
     };
 
     const filteredProducts = products.filter((product) => {
+        if (product.price === undefined || product.category === undefined) return false;
+        const isInPriceRange = product.price >= priceRange[0] && product.price <= priceRange[1];
+        const isMatchSearchQuery = product.title.toLowerCase().includes(searchQuery.toLowerCase());
+        const isMatchCategory = selectedCategories.length
+            ? selectedCategories.includes(product.category)
+            : true;
+        return isInPriceRange && isMatchSearchQuery && isMatchCategory;
+    });
+
+    const filteredProducts2 = allProducts.filter((product) => {
         if (product.price === undefined || product.category === undefined) return false;
         const isInPriceRange = product.price >= priceRange[0] && product.price <= priceRange[1];
         const isMatchSearchQuery = product.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -127,7 +144,7 @@ const ProductsTemplate = () => {
                                 <input
                                     type="range"
                                     min={0}
-                                    max={2000}
+                                    max={5000}
                                     value={priceRange[0]}
                                     onChange={(e) =>
                                         handlePriceRangeChange([
@@ -140,7 +157,7 @@ const ProductsTemplate = () => {
                                 <input
                                     type="range"
                                     min={0}
-                                    max={2000}
+                                    max={5000}
                                     value={priceRange[1]}
                                     onChange={(e) =>
                                         handlePriceRangeChange([
@@ -173,7 +190,7 @@ const ProductsTemplate = () => {
                         </div>
                         <div className="grid mt-32 md:mt-0 grid-cols-12 gap-3 col-span-12 md:col-span-9">
                             {
-                                filteredProducts.length > 0 ? (filteredProducts.map((product, index) => {
+                                filteredProducts2.length > 0 ? (filteredProducts2.map((product, index) => {
                                     return (
                                         <ProductCard
                                             key={index}

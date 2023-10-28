@@ -35,7 +35,13 @@ const AdminTemplate = () => {
                     <div className="bg-black w-24 h-0.5"></div>
                 </div>
                 <div>
-                    <p>Welcome, here you can <b>create, delete and edit products,</b> however these <b>changes will not be reflected in the front</b> but you will be able to see the status in <b>&apos;Network&apos;</b> in the developer console, <b>this is because I am using a public fakeapi</b> (https://dummyjson.com/products) and <b>not a real database.</b></p>
+                    <p>
+                        Welcome, in this panel you can <b>create, edit and delete products,</b> these changes are <b>saved in the redux store</b> and can be <b>seen on the front until it is refreshed.</b>
+                    </p>
+                    <br />
+                    <p>
+                        Also the <b>fakeapi endpoints are also used</b> to perform the actions (these actions are not reflected in the front since they are from the api for testing you can check &apos;Network&apos;)
+                    </p>
                 </div>
                 <div className="flex md:flex-row flex-col mt-8 justify-center gap-6 md:gap-12">
                     <h4

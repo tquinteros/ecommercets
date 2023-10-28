@@ -5,8 +5,12 @@ import Input from "../Input/Input";
 import { ProductItemProps } from "@/types/types";
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
+import { editProduct } from "@/redux/features/products";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/redux/store";
 
 const EditProduct = () => {
+    const dispatch = useDispatch();
     const [products, setProducts] = useState<ProductItemProps[]>([]);
     const [product, setProduct] = useState<ProductItemProps>({
         title: "",
@@ -15,7 +19,7 @@ const EditProduct = () => {
         category: "",
         thumbnail: "",
     });
-
+    const allProducts = useAppSelector((state) => state.productsReducer.value.products);
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,6 +46,7 @@ const EditProduct = () => {
                 thumbnail: product.thumbnail,
             });
             if (response.status === 200) {
+                dispatch(editProduct(product));
                 toast.success("Product edited successfully", {
                     position: "bottom-center"
                 });
@@ -92,7 +97,7 @@ const EditProduct = () => {
                     <option value="select">
                         Select Product
                     </option>
-                    {products.map((product) => (
+                    {allProducts.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}
                         </option>

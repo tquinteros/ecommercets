@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './features/counter';
 import cartReducer from './features/cart';
+import productsReducer from './features/products';
 import authReducer from './features/auth';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
@@ -9,6 +10,7 @@ export const store = configureStore({
         counterReducer,
         cartReducer,
         authReducer,
+        productsReducer,
     }
 })
 

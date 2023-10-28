@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const CheckoutTemplate = () => {
 
     const cart = useAppSelector((state) => state.cartReducer.value.products);
+    const products = useAppSelector((state) => state.productsReducer.value);
     const router = useRouter();
     const calculateTotal = () => {
         let total = 0;
@@ -46,6 +47,11 @@ const CheckoutTemplate = () => {
             router.push("/store");
         }
     }, [cart.length]);
+
+    useEffect(() => {
+        console.log(products);
+    }, []);
+
 
     return (
         <div className="my-16">
