@@ -20,6 +20,7 @@ const ProductsTemplate = () => {
     const allProducts = useAppSelector((state) => state.productsReducer.value.products);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [loadingCategories, setLoadingCategories] = useState<boolean>(false);
+    const router = useRouter();
     const fetchProducts = async () => {
         setLoading(true);
         try {
@@ -49,6 +50,9 @@ const ProductsTemplate = () => {
     useEffect(() => {
         fetchProducts();
         fetchCategories();
+        if (allProducts.length === 0) {
+            router.push('/store')
+        }
     }, []);
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {

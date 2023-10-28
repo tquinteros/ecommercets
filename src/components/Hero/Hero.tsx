@@ -11,11 +11,13 @@ import { addToCart } from "@/redux/features/cart"
 import { useAppSelector } from '@/redux/store';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+import { saveProducts } from '@/redux/features/products';
 
 const Hero = () => {
     const [heroHeight, setHeroHeight] = useState(0);
     const [imageHeight, setImageHeight] = useState<number | null>(null);
     const dispatch = useDispatch();
+    const allProducts = useAppSelector((state) => state.productsReducer.value.products);
     const [imageWidth, setImageWidth] = useState<number | null>(null);
     const [featuredProduct, setFeaturedProduct] = useState<ProductItemProps | null>(null);
     const [loading, setLoading] = useState(true);
@@ -42,6 +44,22 @@ const Hero = () => {
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        if (allProducts.length === 0) {
+            const fetchAllProducts = async () => {
+                try {
+                    const response = await axios.get(
+                        `https://dummyjson.com/products?limit=100`
+                    );
+                    dispatch(saveProducts(response.data.products));
+                } catch (error) {
+                    console.error('Error fetching product details:', error);
+                }
+            };
+            fetchAllProducts();
+        }
+    }, []);
 
     useEffect(() => {
         getFeaturedProduct();
