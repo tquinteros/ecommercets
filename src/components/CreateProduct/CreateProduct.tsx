@@ -18,8 +18,10 @@ const CreateProduct = () => {
         title: "",
         price: 1,
         description: "",
-        discountPercentage: 0,
+        discountPercentage: 1,
         category: "",
+        rating: 0,
+        stock: 1,
         thumbnail: "",
         id: generateRandomId(),
     });
@@ -34,14 +36,26 @@ const CreateProduct = () => {
             });
             return;
         }
-        if (product.price && product.price < 1) {
+        if (product.price !== undefined && product.price < 1) {
             toast.error("Price cannot be less than 1", {
                 position: "bottom-center"
             });
             return;
         }
-        if (product.price && product.price > 5000) {
+        if (product.price !== undefined && product.price > 5000) {
             toast.error("Price cannot be higher tan 5000", {
+                position: "bottom-center"
+            });
+            return;
+        }
+        if (product.discountPercentage !== undefined && product.discountPercentage < 1) {
+            toast.error("Discount percentage cannot be less than 1", {
+                position: "bottom-center"
+            });
+            return;
+        }
+        if (product.stock !== undefined && product.stock < 1) {
+            toast.error("Stock cannot be less than 1", {
                 position: "bottom-center"
             });
             return;
@@ -80,10 +94,10 @@ const CreateProduct = () => {
                     placeholder="Name of the product"
                 />
                 <Input
-                    value={product.price}
+                    value={product.price !== undefined ? product.price.toString() : ""}
                     label="Price"
                     onChange={(e) =>
-                        setProduct({ ...product, price: parseInt(e.target.value) })
+                        setProduct({ ...product, price: e.target.value !== "" ? parseInt(e.target.value) : 0 })
                     }
                     type="text"
                     className="w-full md:w-[70%] xl:w-[50%]"
@@ -93,11 +107,21 @@ const CreateProduct = () => {
                     value={product.discountPercentage}
                     label="Discount Percentage"
                     onChange={(e) =>
-                        setProduct({ ...product, discountPercentage: parseInt(e.target.value) })
+                        setProduct({ ...product, discountPercentage: e.target.value !== "" ? parseInt(e.target.value) : 0 })
                     }
                     type="text"
                     className="w-full md:w-[70%] xl:w-[50%]"
                     placeholder="Discount of the product"
+                />
+                <Input
+                    value={product.stock}
+                    label="Initial Stock"
+                    onChange={(e) =>
+                        setProduct({ ...product, stock: e.target.value !== "" ? parseInt(e.target.value) : 0 })
+                    }
+                    type="text"
+                    className="w-full md:w-[70%] xl:w-[50%]"
+                    placeholder="Initial Stock"
                 />
                 <Input
                     value={product.description}
