@@ -38,6 +38,7 @@ const AdminTemplate = () => {
                     <p>
                         Welcome, in this panel you can <b>create, edit and delete products,</b> these changes are <b>saved in the redux store</b> and can be <b>seen on the front until it is refreshed.</b>
                     </p>
+                    <br />
                     <p>
                         Also the <b>fakeapi endpoints are also used</b> to perform the actions (these actions are not reflected in the front since they are from the api for testing you can check &apos;Network&apos;)
                     </p>
