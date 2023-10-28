@@ -140,7 +140,7 @@ const ProductsTemplate = () => {
                                 <input
                                     type="range"
                                     min={0}
-                                    max={2000}
+                                    max={5000}
                                     value={priceRange[0]}
                                     onChange={(e) =>
                                         handlePriceRangeChange([
@@ -153,7 +153,7 @@ const ProductsTemplate = () => {
                                 <input
                                     type="range"
                                     min={0}
-                                    max={2000}
+                                    max={5000}
                                     value={priceRange[1]}
                                     onChange={(e) =>
                                         handlePriceRangeChange([

@@ -7,6 +7,8 @@ import Button from "../Button/Button";
 import { toast } from "react-toastify";
 import { deleteProduct } from "@/redux/features/products";
 import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/redux/store";
+
 const DeleteProduct = () => {
     const [products, setProducts] = useState<ProductItemProps[]>([]);
     const [product, setProduct] = useState<ProductItemProps>({
@@ -17,6 +19,7 @@ const DeleteProduct = () => {
         category: "",
         thumbnail: "",
     });
+    const allProducts = useAppSelector((state) => state.productsReducer.value.products);
 
     const dispatch = useDispatch();
     const [loading, setLoading] = useState<boolean>(false);
@@ -90,7 +93,7 @@ const DeleteProduct = () => {
                     <option>
                         Select Product
                     </option>
-                    {products.map((product) => (
+                    {allProducts.map((product) => (
                         <option key={product.id} value={product.id}>
                             {product.title}
                         </option>

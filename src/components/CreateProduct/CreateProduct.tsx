@@ -33,6 +33,12 @@ const CreateProduct = () => {
             });
             return;
         }
+        if (product.price && product.price > 5000) {
+            toast.error("Price cannot be higher tan 5000", {
+                position: "bottom-center"
+            });
+            return;
+        }
         setLoading(true);
         try {
             const response = await axios.post("https://dummyjson.com/products/add", product);
