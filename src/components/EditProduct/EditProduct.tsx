@@ -5,8 +5,10 @@ import Input from "../Input/Input";
 import { ProductItemProps } from "@/types/types";
 import Button from "../Button/Button";
 import { toast } from "react-toastify";
-
+import { editProduct } from "@/redux/features/products";
+import { useDispatch } from "react-redux";
 const EditProduct = () => {
+    const dispatch = useDispatch();
     const [products, setProducts] = useState<ProductItemProps[]>([]);
     const [product, setProduct] = useState<ProductItemProps>({
         title: "",
@@ -42,6 +44,7 @@ const EditProduct = () => {
                 thumbnail: product.thumbnail,
             });
             if (response.status === 200) {
+                dispatch(editProduct(product));
                 toast.success("Product edited successfully", {
                     position: "bottom-center"
                 });

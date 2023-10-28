@@ -25,7 +25,9 @@ export const products = createSlice({
         },
         editProduct: (state, action: PayloadAction<ProductItemProps>) => {
             const productIndex = state.value.products.findIndex(product => product.id === action.payload.id);
-            state.value.products[productIndex] = action.payload;
+            if (productIndex !== -1) {
+                state.value.products[productIndex] = action.payload;
+            }
         },
         deleteProduct: (state, action: PayloadAction<number>) => {
             const productIndex = state.value.products.findIndex(product => product.id === action.payload);
