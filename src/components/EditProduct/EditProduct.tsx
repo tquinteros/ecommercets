@@ -37,24 +37,34 @@ const EditProduct = () => {
             return;
         }
         setLoading(true);
+        // try {
+        //     const response = await axios.put(`https://dummyjson.com/products/${product.id}`, {
+        //         title: product.title,
+        //         price: product.price,
+        //         description: product.description,
+        //         category: product.category,
+        //         thumbnail: product.thumbnail,
+        //     });
+        //     if (response.status === 200) {
+        //         toast.success("Product edited successfully", {
+        //             position: "bottom-center"
+        //         });
+        //     } else {
+        //         toast.error("Something went wrong", {
+        //             position: "bottom-center"
+        //         });
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        //     toast.error("Something went wrong", {
+        //         position: "bottom-center"
+        //     });
+        // }
         try {
-            const response = await axios.put(`https://dummyjson.com/products/${product.id}`, {
-                title: product.title,
-                price: product.price,
-                description: product.description,
-                category: product.category,
-                thumbnail: product.thumbnail,
+            dispatch(editProduct(product));
+            toast.success("Product edited successfully", {
+                position: "bottom-center"
             });
-            if (response.status === 200) {
-                dispatch(editProduct(product));
-                toast.success("Product edited successfully", {
-                    position: "bottom-center"
-                });
-            } else {
-                toast.error("Something went wrong", {
-                    position: "bottom-center"
-                });
-            }
         } catch (error) {
             console.log(error);
             toast.error("Something went wrong", {
@@ -79,15 +89,15 @@ const EditProduct = () => {
 
     const handleSelectProduct = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedProductId = parseInt(e.target.value);
-        const selectedProduct = products.find((product) => product.id === selectedProductId);
+        const selectedProduct = allProducts.find((product) => product.id === selectedProductId);
         if (selectedProduct) {
             setProduct(selectedProduct);
         }
     };
 
-    useEffect(() => {
-        fetchProducts();
-    }, []);
+    // useEffect(() => {
+    //     fetchProducts();
+    // }, []);
 
     return (
         <>
