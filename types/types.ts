@@ -50,3 +50,9 @@ export interface InputProps {
     className?: string;
     readonly?: boolean;
 }
+
+export interface RedeemModalProps {
+    isOpen: boolean;
+    children: React.ReactNode;
+    onClose: () => void;
+  }

@@ -9,6 +9,7 @@ import { logIn, logOut, toggleAdmin } from "@/redux/features/auth"
 import Link from "next/link";
 import axios from "axios";
 import { saveProducts } from "@/redux/features/products";
+import Modal from "../Modals/RedeemModal/Modal";
 
 const LoginTemplate = () => {
     const router = useRouter();
@@ -17,6 +18,7 @@ const LoginTemplate = () => {
     const [password, setPassword] = useState<string>("")
     const dispatch = useDispatch<AppDispatch>();
     const isAuthenticated = useAppSelector((state: any) => state.authReducer.value.isAuthenticated);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const saveAllProducts = async () => {
         try {
@@ -28,7 +30,7 @@ const LoginTemplate = () => {
             console.error('Error fetching product details:', error);
         }
     }
-    
+
     const users = [
         {
             username: "admin",
@@ -49,6 +51,9 @@ const LoginTemplate = () => {
             const height = header.getBoundingClientRect().height;
             setHeaderHeight(height);
         }
+        setTimeout(() => {
+            setIsModalOpen(true);
+        }, 1000)
     }, []);
 
     useEffect(() => {
@@ -75,6 +80,10 @@ const LoginTemplate = () => {
         }
     }
 
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div
             style={{ height: `calc(100vh - ${headerHeight}px)` }}
@@ -100,7 +109,13 @@ const LoginTemplate = () => {
                 </div>
                 <Link className="underline hover:opacity-75 duration-300" href="/store">Proceed without user</Link>
             </form>
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                <div className="mb-12">
+                    <h3 className="text-center text-xl font-bold mb-4">Fake Ecommerce</h3>
+                    <p>Welcome, in this ecommerce a fakeapi (dummyproducts) is used and the products are saved in the global state (Redux) where later from the admin panel you will be able to create, edit and delete products.</p>
 
+                </div>
+            </Modal>
         </div>
     )
 }
