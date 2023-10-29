@@ -36,7 +36,7 @@ const AdminTemplate = () => {
                 </div>
                 <div>
                     <p>
-                        Welcome, in this panel you can <b>create, edit and delete products,</b> these changes are <b>saved in the redux store</b> and can be <b>seen on the front until it is refreshed.</b>
+                        In this panel you can <b>create, edit and delete products,</b> these changes are <b>saved in the redux store</b> and can be <b>seen on the front until it is refreshed.</b>
                     </p>
                     <br />
                     <p>
