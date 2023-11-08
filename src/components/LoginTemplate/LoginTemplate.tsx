@@ -51,9 +51,9 @@ const LoginTemplate = () => {
             const height = header.getBoundingClientRect().height;
             setHeaderHeight(height);
         }
-        setTimeout(() => {
-            setIsModalOpen(true);
-        }, 1000)
+        // setTimeout(() => {
+        //     setIsModalOpen(true);
+        // }, 1000)
     }, []);
 
     useEffect(() => {
@@ -109,13 +109,13 @@ const LoginTemplate = () => {
                 </div>
                 <Link className="underline hover:opacity-75 duration-300" href="/store">Proceed without user</Link>
             </form>
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+            {/* <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
                 <div className="mb-12">
                     <h3 className="text-center text-xl font-bold mb-4">Fake Ecommerce</h3>
                     <p>Welcome, in this ecommerce a fakeapi (dummyproducts) is used and the products are saved in the global state (Redux) where later from the admin panel you will be able to create, edit and delete products.</p>
 
                 </div>
-            </Modal>
+            </Modal> */}
         </div>
     )
 }
