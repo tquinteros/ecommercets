@@ -168,7 +168,7 @@ const ProductsTemplate = () => {
                                     className="w-full"
                                 />
                             </div>
-                            <div>
+                            {/* <div>
                                 <h2>Categories</h2>
                                 <ul className="flex flex-col mt-2 gap-1">
                                     {!loadingCategories ? (categories.map((category, index) => (
@@ -186,7 +186,7 @@ const ProductsTemplate = () => {
                                         <h2>Loading...</h2>
                                     </div>)}
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="grid mt-32 md:mt-0 grid-cols-12 gap-3 col-span-12 md:col-span-9">
                             {
